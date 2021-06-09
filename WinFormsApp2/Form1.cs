@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Microsoft.VisualBasic;
 
 namespace WinFormsApp2
 {
@@ -19,13 +20,13 @@ namespace WinFormsApp2
     
     public partial class Form1 : Form
     {
-        //public string cookie = "rtFa=nPvgjXhD+g8SbZf50BODSJTuycj8EbWa/xz8Hsu5ugQmOTQwRjNEQjYtREI2MS00QzIwLTk1OTgtOEJGNzAyRDE2M0I5o2wrlP6lr3PqLejCYJlLlruL4d9DSc+jLrxfn/lywR0JapxDn3rFuBfBGPbk3sOZAWSgMc3S1SPiciVxdSt7CY1G9vx9wyCwHVbDhVIR4GR5bS6Iu+11SnQYkfU6x+H5LD9qsSLVkagy9XjY+hxv1XjZ/npE2p37hcWlMhmTnZUdAmvuAGCF74UMjY7nbk+atQTliTfIc2E3b5sybPy00FLrI00qEtxbOCCkAgg2n/fQPrqRnB3J/JB7yeZZoqwvf6wix8hzcX7SvMnxTTx+vREQEiV0rEr6cmLqymIG17gA4Edxw31KxTPR8AQXfAnloWa/ehmhXs9hREGVqhkt0UUAAAA=; FedAuth=77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48U1A+VjEwLDBoLmZ8bWVtYmVyc2hpcHwxMDAzMzIzMGM1Y2Q3NTI5QGxpdmUuY29tLDAjLmZ8bWVtYmVyc2hpcHxhZG1pcmVAYm94dmlkZW8ucGFydG5lci5vbm1zY2hpbmEuY24sMTMyNjI0NjEyNTgwMDAwMDAwLDEzMjYyMDE0NDc4MDAwMDAwMCwxMzI2NzY0MjU1ODQyMzI2OTAsMTAxLjIwNy4xNy4xMjUsMyw5NDBmM2RiNi1kYjYxLTRjMjAtOTU5OC04YmY3MDJkMTYzYjksLDFlY2ZjYmEzLWE1NTctNDFkNy1hODIxLTA1N2NjNGI4Y2Q4Ziw1YzRkY2U5Zi1hMGI0LTAwMDAtMTIwNy1jNGVlZmJjYTIyNGEsNWM0ZGNlOWYtYTBiNC0wMDAwLTEyMDctYzRlZWZiY2EyMjRhLCwwLDEzMjY3MjE0MTU4Mjk4Mjc4OSwxMzI2NzQ2OTc1ODI5ODI3ODksLCwsMjY1MDQ2Nzc0Mzk5OTk5OTk5OSwxMzI2NzIxMDU1ODAwMDAwMDAsN2MyMzczNGQtZjNiMS00MDgzLWEwYzMtY2E0MGY5ZmQ5ZDQxLCwsLCwsYnlzRmNPS3NUcXZIVXlNK2pXL3Zha3FTMkN4Zm5vcEQvUzdXN3Y0eFlRcC9ZZXlkcFZ5SDlwaW51S1lVY0lRMEt1cDhoWVJ6a3ozNHYrK3ZGdVFQeUE4L3RPSG5FS3ZJMEo4NS81cDdKUURUYmRUN3pVVFN5OUpNb3Q0alg4RUllYjlGWERiTGtrVjV0WnFSbTAzYmlxVUZQYTFaYU5DNWdZd3RsT0w5VlV3U0xoeEpoNFFISHJMUGI2TkZEWmROMVo1U3ZVSE9nZ0pBOXczYnNuT05aMkpyWTJ6cjMwU0lhYzZLUG52VE9YZXlBcW4vT1ZiZW5jRmhOazJLdTkxRTJycTFhRmFJWnNGNzVQbTdwRC9HTlVwNFFMejhXRmJFSWNlUEg5am9xTW9MdXBOOWU3L0ZMSmhiRHhIMWRieHJtRDgyalpLUFVwN1hzOXVqS00xU1lnPT08L1NQPg==; SPWorkLoadAttribution=Url=https://boxvideo.sharepoint.cn/&AppTitle=RenderClientSideBasePage; ScaleCompatibilityDeviceId=08e50dfe-d4a9-45d4-9b72-d821da232edd";
+    
         public string cookie = "";
-        
+        public string mainsite = "%27%2Fsites%2Fbox%2FShared%20Documents%27";
         public JObject GlobalJs;
         public string mulu = "";
         public string root = "";
-
+        public string mm = "https://boxvideo.sharepoint.cn/sites/box";
         public void reload() {
 
             cookie = ConfigAppSettings.GetValue("Cookie");
@@ -47,7 +48,7 @@ namespace WinFormsApp2
             
             
             string url = "https://boxvideo.sharepoint.cn/";
-            url = "https://boxvideo.sharepoint.cn/sites/box/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=" + a1 + "&RootFolder=" + a2 + "&TryNewExperienceSingle=TRUE";
+            url = mm+"/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=" + a1 + "&RootFolder=" + a2 + "&TryNewExperienceSingle=TRUE";
             string post = "{\"parameters\":{\"__metadata\":{\"type\":\"SP.RenderListDataParameters\"},\"RenderOptions\":1446151,\"AllowMultipleValueFilterForTaxonomyFields\":true,\"ViewXml\":\"<RowLimit Paged=\\\"TRUE\\\">99999</RowLimit>\",\"AddRequiredFields\":true}}";
             HttpWebRequest request = null;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -72,6 +73,7 @@ namespace WinFormsApp2
             System.Diagnostics.Debug.WriteLine(header);
             try
             {
+                //HttpWebResponse response = await request.GetResponseAsync() as HttpWebResponse;
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();//响应对象
                 string Ret = "";
                 StreamReader st = new StreamReader(response.GetResponseStream(), Encoding.ASCII);
@@ -105,7 +107,7 @@ namespace WinFormsApp2
             //url = "https://boxvideo.sharepoint.cn/sites/box/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fsites%2Fbox%2FShared%20Documents%27&RootFolder=%2Fsites%2Fbox%2FShared%20Documents%2FCOS&View=d4467c2f-de2c-472e-9ba3-7c565accb7cf&TryNewExperienceSingle=TRUE";
             
             
-            url = "https://boxvideo.sharepoint.cn/sites/box/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1="+a1+"&RootFolder="+a2+"&TryNewExperienceSingle=TRUE";
+            url = mm+"/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1="+a1+"&RootFolder="+a2+"&TryNewExperienceSingle=TRUE";
             string post = "{\"parameters\":{\"__metadata\":{\"type\":\"SP.RenderListDataParameters\"},\"RenderOptions\":1446151,\"AllowMultipleValueFilterForTaxonomyFields\":true,\"ViewXml\":\"<RowLimit Paged=\\\"TRUE\\\">99999</RowLimit>\",\"AddRequiredFields\":true}}";
             HttpWebRequest request = null;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -171,7 +173,7 @@ namespace WinFormsApp2
         {
             reload();
 
-            ListNow("%27%2Fsites%2Fbox%2FShared%20Documents%27", "",true);
+            ListNow(mainsite, "",true);
             //ListNow("%27%2Fsites%2Fbox%2FShared%20Documents%27", "%2Fsites%2Fbox%2FShared%20Documents%2FCOS");
             init_aria();
 
@@ -191,7 +193,7 @@ namespace WinFormsApp2
                     return;
                 }
                 mulu = new_mulu;
-                ListNow("%27%2Fsites%2Fbox%2FShared%20Documents%27", mulu);
+                ListNow(mainsite, mulu);
             }
              //mulu
         }
@@ -313,7 +315,7 @@ namespace WinFormsApp2
                         else
                         {
                             mulu = ja[i]["FileRef.urlencode"].ToString();
-                            ListNow("%27%2Fsites%2Fbox%2FShared%20Documents%27", mulu);
+                            ListNow(mainsite, mulu);
                         }
                         //Debug.WriteLine(bb);
                         //string cc = GlobalJs["ListData"]["Row"].ToString();
@@ -362,14 +364,72 @@ namespace WinFormsApp2
             a.loging = "https://boxvideo.sharepoint.cn/";
             a.ShowDialog();
             reload();
-            ListNow("%27%2Fsites%2Fbox%2FShared%20Documents%27", "");
+            ListNow(mainsite, "");
 
 
         }
+        public static string UrlEncode(string str)
+        {
+            StringBuilder sb = new StringBuilder();
+            byte[] byStr = System.Text.Encoding.UTF8.GetBytes(str); //默认是System.Text.Encoding.Default.GetBytes(str)
+            for (int i = 0; i < byStr.Length; i++)
+            {
+                sb.Append(@"%" + Convert.ToString(byStr[i], 16));
+            }
 
+            return (sb.ToString());
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            string str = Interaction.InputBox("输入分享链接", "提示", "", -1, -1);
 
+            string url = str;
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+            request.Method = "GET";
+            request.KeepAlive = false;
+            request.ContentType = "application/json";
+            request.Headers.Add("Cookie",cookie);
+            try
+            {
+
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();//响应对象
+                StreamReader st = new StreamReader(response.GetResponseStream(), Encoding.ASCII);
+                string Ret = st.ReadToEnd();
+                Debug.WriteLine(Ret);
+                st.Close();
+                response.Close();
+                int start = Ret.IndexOf("webAbsoluteUrl");//14
+                int last = Ret.IndexOf('"', start+18);
+                Debug.WriteLine(start);
+                Debug.WriteLine(last);
+                Debug.WriteLine(Ret.Substring (start+17, last-start-17));
+
+                mm = Ret.Substring(start + 17, last - start - 17);
+
+                start = Ret.IndexOf("listUrl");//7+3
+                last = Ret.IndexOf('"', start + 11);
+                Debug.WriteLine(start);
+                Debug.WriteLine(last);
+                Debug.WriteLine(Ret.Substring(start + 10, last - start -10));
+                mainsite = "%27"+UrlEncode(Ret.Substring(start + 10, last - start - 10))+ "%27";
+                Debug.WriteLine(mainsite);
+                //Base64Encoder Decode = new Base64Encoder();
+
+                //byte[] bytes = System.Text.Encoding.UTF8.GetBytes(Ret.Substring(start + 23, last - start - 23));
+                //mainsite = Decode.GetEncoded(bytes);
+                mulu = "";
+                ListNow(mainsite,mulu);
+
+                
+                //Debug.WriteLine(Ret);
+
+
+            }
+
+            catch (WebException)
+            { }
+
+            
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -380,7 +440,40 @@ namespace WinFormsApp2
             //listView1.Width = Form1.Width;
             //listView1.Width = Form1.Width;
         }
+        private void download_file(string filemu)
+        {
+            string Ret=GetJson(mainsite, filemu);
+            var objJSON = JsonConvert.DeserializeObject(Ret);
+            JObject jo = (JObject)JsonConvert.DeserializeObject(objJSON.ToString());
+            string bb = jo["ListData"]["Row"].ToString();
+            JArray ja = JArray.Parse(bb);
+            for (int i = 0; i < ja.Count; i++) {
 
+                if (ja[i]["ContentType"].ToString() == "文件夹")
+                {
+                    download_file(ja[i]["FileRef.urlencode"].ToString());
+                }
+                else {
+
+                    string url = "https://boxvideo.sharepoint.cn/" + ja[i]["FileRef.urlencodeasurl"].ToString();
+
+                    string Pa = "[[\"" + url + "\"],{\"out\":\"" + ja[i]["_EditMenuTableStart"].ToString() + "\",\"header\":[\"User-Agent:netdisk\",\"Referer: http://sharepoint.com\",\"Cookie: " + cookie + "\"]}]";
+                    Base64Encoder Decode = new Base64Encoder();
+
+                    byte[] bytes = System.Text.Encoding.UTF8.GetBytes(Pa);
+                    string rr = Decode.GetEncoded(bytes);
+                    //Decode.GetEncoded()
+                    Debug.WriteLine(rr);
+
+                    request_aria("aria2.addUri", rr);
+                }
+            
+            }
+
+
+
+
+        }
         private void 下载_Click(object sender, EventArgs e)
         {
 
@@ -401,7 +494,9 @@ namespace WinFormsApp2
                         if (ja[i]["ContentType"].ToString() == "文件夹")
                         {
                             //MessageBox.Show("您选择的是文件夹", "提示");文件夹循环下载
-                            MessageBox.Show("正在写中", "提示");
+                            //MessageBox.Show("正在写中", "提示");
+                            download_file(ja[i]["FileRef.urlencode"].ToString());
+
                         }
                         else
                         {
