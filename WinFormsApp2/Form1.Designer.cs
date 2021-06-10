@@ -43,10 +43,10 @@ namespace WinFormsApp2
             // 
             this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(50, 33);
+            this.listView1.Location = new System.Drawing.Point(50, 51);
             this.listView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(535, 280);
+            this.listView1.Size = new System.Drawing.Size(535, 262);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -60,13 +60,13 @@ namespace WinFormsApp2
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.下载});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 56);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 28);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening_1);
             // 
             // 下载
             // 
             this.下载.Name = "下载";
-            this.下载.Size = new System.Drawing.Size(210, 24);
+            this.下载.Size = new System.Drawing.Size(108, 24);
             this.下载.Text = "下载";
             this.下载.Click += new System.EventHandler(this.下载_Click);
             // 
@@ -75,7 +75,7 @@ namespace WinFormsApp2
             this.button1.Location = new System.Drawing.Point(108, 7);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 22);
+            this.button1.Size = new System.Drawing.Size(117, 26);
             this.button1.TabIndex = 1;
             this.button1.Text = "打开分享链接";
             this.button1.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@ namespace WinFormsApp2
             this.button2.Location = new System.Drawing.Point(251, 7);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 22);
+            this.button2.Size = new System.Drawing.Size(113, 26);
             this.button2.TabIndex = 2;
             this.button2.Text = "返回上一级";
             this.button2.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@ namespace WinFormsApp2
             this.button3.Location = new System.Drawing.Point(382, 7);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(114, 22);
+            this.button3.Size = new System.Drawing.Size(122, 26);
             this.button3.TabIndex = 3;
             this.button3.Text = "登录账号";
             this.button3.UseVisualStyleBackColor = true;

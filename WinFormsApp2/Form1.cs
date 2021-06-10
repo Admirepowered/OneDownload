@@ -27,9 +27,12 @@ namespace WinFormsApp2
         public string mulu = "";
         public string root = "";
         public string mm = "https://boxvideo.sharepoint.cn/sites/box";
+        public string onedrive = "https://boxvideo.sharepoint.cn/";
+
         public void reload() {
 
             cookie = ConfigAppSettings.GetValue("Cookie");
+
         }
 
         public Form1()
@@ -47,8 +50,7 @@ namespace WinFormsApp2
         private string GetJson(string a1, string a2) {
             
             
-            string url = "https://boxvideo.sharepoint.cn/";
-            url = mm+"/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=" + a1 + "&RootFolder=" + a2 + "&TryNewExperienceSingle=TRUE";
+            string url = mm+"/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=" + a1 + "&RootFolder=" + a2 + "&TryNewExperienceSingle=TRUE";
             string post = "{\"parameters\":{\"__metadata\":{\"type\":\"SP.RenderListDataParameters\"},\"RenderOptions\":1446151,\"AllowMultipleValueFilterForTaxonomyFields\":true,\"ViewXml\":\"<RowLimit Paged=\\\"TRUE\\\">99999</RowLimit>\",\"AddRequiredFields\":true}}";
             HttpWebRequest request = null;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -361,7 +363,7 @@ namespace WinFormsApp2
         {
         //Login.ActiveForm.Activate();
             Login a = new Login();
-            a.loging = "https://boxvideo.sharepoint.cn/";
+            a.loging = onedrive;
             a.ShowDialog();
             reload();
             ListNow(mainsite, "");
@@ -435,7 +437,10 @@ namespace WinFormsApp2
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
 
- 
+            //listView1.Size.Height = Form1.Size.Height - 20;
+            listView1.Size = new Size(this.Size.Width-93 , this.Size.Height-109); ;
+
+
             
             //listView1.Width = Form1.Width;
             //listView1.Width = Form1.Width;
@@ -455,7 +460,7 @@ namespace WinFormsApp2
                 }
                 else {
 
-                    string url = "https://boxvideo.sharepoint.cn/" + ja[i]["FileRef.urlencodeasurl"].ToString();
+                    string url = onedrive + ja[i]["FileRef.urlencodeasurl"].ToString();
 
                     string Pa = "[[\"" + url + "\"],{\"out\":\"" + ja[i]["_EditMenuTableStart"].ToString() + "\",\"header\":[\"User-Agent:netdisk\",\"Referer: http://sharepoint.com\",\"Cookie: " + cookie + "\"]}]";
                     Base64Encoder Decode = new Base64Encoder();
@@ -503,7 +508,7 @@ namespace WinFormsApp2
                             //mulu = ja[i]["FileRef.urlencode"].ToString();
                             //ListNow("%27%2Fsites%2Fbox%2FShared%20Documents%27", mulu);
                             
-                            string url = "https://boxvideo.sharepoint.cn/" + ja[i]["FileRef.urlencodeasurl"].ToString();
+                            string url = onedrive + ja[i]["FileRef.urlencodeasurl"].ToString();
 
                             string Pa= "[[\""+url+"\"],{\"out\":\""+ ja[i]["_EditMenuTableStart"].ToString() + "\",\"header\":[\"User-Agent:netdisk\",\"Referer: http://sharepoint.com\",\"Cookie: "+cookie+"\"]}]";
                             Base64Encoder Decode = new Base64Encoder();
